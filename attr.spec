@@ -9,7 +9,7 @@ Source0:	http://download.savannah.gnu.org/releases/attr/%{name}-%{version}.src.t
 URL:		http://savannah.nongnu.org/projects/attr
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
