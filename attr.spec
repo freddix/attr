@@ -1,14 +1,12 @@
 Summary:	Utility for managing filesystem extended attributes
 Name:		attr
-Version:	2.4.46
+Version:	2.4.47
 Release:	1
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Applications/System
 Source0:	http://download.savannah.gnu.org/releases/attr/%{name}-%{version}.src.tar.gz
-# Source0-md5:	db557c17fdfa4f785333ecda08654010
+# Source0-md5:	84f58dec00b60f2dc8fd1c9709291cc7
 URL:		http://savannah.nongnu.org/projects/attr
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	gettext
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,8 +28,6 @@ Header files to develop software which manipulate extended attributes.
 
 %build
 %{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
 %configure \
 	--disable-static
 %{__make} \
