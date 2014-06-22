@@ -1,9 +1,9 @@
-Summary:	Utility for managing filesystem extended attributes
+Summary:	Utilities for managing filesystem extended attributes
 Name:		attr
 Version:	2.4.47
-Release:	1
+Release:	2
 License:	LGPL v2+ (library), GPL v2+ (utilities)
-Group:		Applications/System
+Group:		Core/System
 Source0:	http://download.savannah.gnu.org/releases/attr/%{name}-%{version}.src.tar.gz
 # Source0-md5:	84f58dec00b60f2dc8fd1c9709291cc7
 URL:		http://savannah.nongnu.org/projects/attr
@@ -12,16 +12,17 @@ BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-An experimental attr command to manipulate extended attributes under
-Linux.
+A set of tools for manipulating extended attributes on filesystem
+objects, in particular getfattr(1) and setfattr(1).
 
 %package devel
-Summary:	Header files and libraries to use extended attributes
+Summary:	Header files and libraries for attr development
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Header files to develop software which manipulate extended attributes.
+Header files and libraries needed to develop programs which make use
+of extended attributes.
 
 %prep
 %setup -q
@@ -31,8 +32,8 @@ Header files to develop software which manipulate extended attributes.
 %configure \
 	--disable-static
 %{__make} \
-	DEBUG="-DNDEBUG"	\
-	OPTIMIZER="%{rpmcflags} -DENABLE_GETTEXT"
+	DEBUG="-DNDEBUG"    \
+	OPTIMIZER="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -40,11 +41,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 install install-lib install-dev \
 	DIST_ROOT=$RPM_BUILD_ROOT
 
-rm -rf	$RPM_BUILD_ROOT%{_mandir}/man2
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}
+%{__rm} -r $RPM_BUILD_ROOT%{_mandir}/man2
 
 %find_lang %{name}
-
-rm -rf $RPM_BUILD_ROOT%{_docdir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
