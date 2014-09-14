@@ -1,7 +1,8 @@
+# based on PLD Linux spec git://git.pld-linux.org/packages/attr.git
 Summary:	Utilities for managing filesystem extended attributes
 Name:		attr
 Version:	2.4.47
-Release:	2
+Release:	3
 License:	LGPL v2+ (library), GPL v2+ (utilities)
 Group:		Core/System
 Source0:	http://download.savannah.gnu.org/releases/attr/%{name}-%{version}.src.tar.gz
